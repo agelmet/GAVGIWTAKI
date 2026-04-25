@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Χρυσούλα Γαυγιωτάκη | Ψυχολόγος - Ψυχοθεραπεύτρια</title>
-    <meta name="description" content="Η Χρυσούλα Γαυγιωτάκη είναι αδειούχος Ψυχολόγος (BSc, MSc) και Ψυχοθεραπεύτρια στην Αργυρούπολη. Ολιστική προσέγγιση & συμπόνια για ενήλικες, παιδιά και εφήβους.">
+    <meta name="description" content="Η Χρυσούλα Γαυγιωτάκη είναι αδειούχος Ψυχολόγος (BSc, MSc) και Ψυχοθεραπεύτρια στην Αργυρούπολη. Επιστημονικά τεκμηριωμένη προσέγγιση για ενήλικες, παιδιά και εφήβους.">
     <meta name="keywords" content="Ψυχολόγος Αργυρούπολη, Ψυχοθεραπεία, Χρυσούλα Γαυγιωτάκη, Συστημική Θεραπεία, Κρίσεις Πανικού, Ψυχολογία Παιδιού, Διαδικτυακή Ψυχοθεραπεία">
     <meta name="author" content="Advon Media">
     <meta name="robots" content="index, follow">
@@ -21,12 +21,12 @@
                 extend: {
                     colors: {
                         calm: {
-                            slate: '#2C3643',      // Deep slate/navy for text and contrast
-                            blush: '#D4BFC4',      // Dusty blush/rose for soft luxury
-                            sand: '#EAE6E1',       // Warm off-white for backgrounds
-                            steel: '#7A8B99',      // Soft steel blue for secondary text
-                            pearl: '#F8F7F5',      // Ultra light pearl for main bg
-                            dark: '#1A1D24',       // Almost black for footer
+                            slate: '#2C3643',      
+                            blush: '#D4BFC4',      
+                            sand: '#EAE6E1',       
+                            steel: '#7A8B99',      
+                            pearl: '#F8F7F5',      
+                            dark: '#1A1D24',       
                         }
                     },
                     fontFamily: {
@@ -37,11 +37,14 @@
                         'glass': '0 8px 32px 0 rgba(44, 54, 67, 0.08)',
                         'lux': '0 20px 40px -15px rgba(0,0,0,0.1)',
                         'glow': '0 0 30px -5px rgba(212, 191, 196, 0.4)',
+                        'service-hover': '0 30px 60px -15px rgba(44, 54, 67, 0.12)',
                     },
                     animation: {
                         'marquee': 'marquee 60s linear infinite',
                         'float': 'float 8s ease-in-out infinite',
                         'fade-in': 'fadeIn 1.5s ease-out forwards',
+                        'slow-pan': 'slowPan 30s ease-in-out infinite alternate',
+                        'pulse-slow': 'pulseSlow 6s infinite',
                     },
                     keyframes: {
                         marquee: {
@@ -55,6 +58,14 @@
                         fadeIn: {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slowPan: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.05)' },
+                        },
+                        pulseSlow: {
+                            '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+                            '50%': { opacity: '0.7', transform: 'scale(1.1)' },
                         }
                     }
                 }
@@ -73,7 +84,6 @@
 
         /* Typography Utilities */
         .calligraphic { font-family: 'Playfair Display', serif; font-style: italic; }
-        .tracking-widest-custom { tracking: 0.2em; }
 
         /* Scroll Reveal */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
@@ -95,11 +105,19 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.8);
         }
-        .glass-dark {
-            background: rgba(26, 29, 36, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        
+        /* Service Cards Premium Hover */
+        .service-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 1);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .service-glass:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px -15px rgba(44, 54, 67, 0.1);
         }
 
         /* Marquee */
@@ -115,17 +133,6 @@
         #lightbox img { transform: scale(0.95); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
         #lightbox.active img { transform: scale(1); }
 
-        /* Parallax Background */
-        .bg-parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        /* Hover Effects */
-        .hover-lift { transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease; }
-        .hover-lift:hover { transform: translateY(-8px); box-shadow: var(--tw-shadow-lux); }
     </style>
 
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -162,23 +169,27 @@
     </nav>
 
     <section class="relative min-h-screen flex items-center justify-center md:justify-end pt-24 pb-12 px-6 overflow-hidden">
-        <div class="absolute inset-0 z-0 bg-parallax" style="background-image: url('https://cdn.doctoranytime.gr/practices/6d7941b6-f109-4cf8-b62f-d7fdd370b80c.jpg');"></div>
+        <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://cdn.doctoranytime.gr/practices/6d7941b6-f109-4cf8-b62f-d7fdd370b80c.jpg');"></div>
         
         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-calm-pearl/40 to-calm-pearl/95 z-10 hidden md:block"></div>
         <div class="absolute inset-0 bg-calm-pearl/80 z-10 md:hidden"></div>
 
         <div class="max-w-7xl mx-auto w-full relative z-20 flex justify-center md:justify-end">
             <div class="w-full md:w-1/2 lg:w-[45%] glass-card p-10 md:p-14 rounded-2xl shadow-lux opacity-0 animate-fade-in" style="animation-delay: 0.3s;">
-                <span class="block text-calm-steel tracking-[0.2em] text-sm font-medium mb-6 uppercase">Καλως ηρθατε</span>
+                <span class="flex items-center gap-3 text-calm-steel tracking-[0.2em] text-sm font-medium mb-6 uppercase">
+                    <span class="w-8 h-px bg-calm-blush"></span>
+                    ΑΣΦΑΛΕΣ ΠΛΑΙΣΙΟ ΘΕΡΑΠΕΙΑΣ
+                </span>
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-calm-slate leading-[1.1] mb-6">
-                    Ολιστική Προσέγγιση & <span class="text-calm-blush italic">Συμπόνια</span>
+                    Δώστε χώρο σε όσα <span class="text-calm-blush italic">νιώθετε.</span>
                 </h1>
                 <p class="text-lg md:text-xl text-calm-slate/80 mb-10 font-light leading-relaxed">
-                    Ανακαλύπτοντας τον Αληθινό σας Εαυτό. Ένας ασφαλής χώρος στην Αργυρούπολη για την κατανόηση, την αποδοχή και την εξέλιξή σας.
+                    Σπάμε τον κύκλο της εσωτερικής κριτικής. Μέσα από επιστημονικά τεκμηριωμένες μεθόδους, δουλεύουμε μαζί για να ανακτήσετε την ηρεμία και τον έλεγχο της καθημερινότητάς σας.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center gap-6">
-                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-calm-slate text-white text-sm tracking-widest font-medium hover:bg-calm-blush hover:text-calm-slate transition-all duration-300 text-center">
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-calm-slate text-white text-sm tracking-widest font-medium hover:bg-calm-blush hover:text-calm-slate transition-all duration-300 text-center flex items-center justify-center gap-3 group">
                         ΞΕΚΙΝΗΣΤΕ ΕΔΩ
+                        <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
             </div>
@@ -189,11 +200,11 @@
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center">
             
             <div class="lg:col-span-5 relative reveal">
-                <div class="relative rounded-[2rem] overflow-hidden shadow-lux animate-float border-[8px] border-white">
+                <div class="relative rounded-[2.5rem] overflow-hidden shadow-lux animate-float border-[8px] border-white z-10 bg-white">
                     <img src="https://cdn.doctoranytime.gr/profileimages/306f5f60-fece-4f49-b521-2c928aa0ccc8.jpg" alt="Χρυσούλα Γαυγιωτάκη Ψυχολόγος" class="w-full h-auto object-cover filter contrast-105">
                 </div>
-                <div class="absolute -bottom-8 -left-8 w-32 h-32 border border-calm-blush rounded-full z-[-1] opacity-50"></div>
-                <div class="absolute -top-8 -right-8 w-24 h-24 bg-calm-sand rounded-full z-[-1]"></div>
+                <div class="absolute -bottom-8 -left-8 w-40 h-40 border border-calm-blush rounded-full z-0 opacity-50"></div>
+                <div class="absolute top-10 -right-10 w-32 h-32 bg-calm-blush/10 rounded-full z-0 blur-2xl"></div>
             </div>
 
             <div class="lg:col-span-7 reveal delay-200">
@@ -209,7 +220,7 @@
                     <p>
                         Παράλληλα, με στόχο τη συνεχή της εξέλιξη, εκπαιδεύεται στην Ψυχοθεραπεία Gestalt, εστιάζοντας στο «εδώ και τώρα» και στην αυθεντική σωματική και συναισθηματική επίγνωση.
                     </p>
-                    <blockquote class="border-l-2 border-calm-blush pl-6 py-2 my-8 text-xl font-serif text-calm-slate italic">
+                    <blockquote class="border-l-2 border-calm-blush pl-6 py-2 my-8 text-xl font-serif text-calm-slate italic bg-calm-blush/5 rounded-r-lg">
                         "Είτε πρόκειται για κρίσεις πανικού, άγχος, κατάθλιψη, είτε για δυσκολίες στις σχέσεις, η προσέγγιση είναι πάντα ζεστή, μη-επικριτική και απόλυτα προσαρμοσμένη στις δικές σας ανάγκες."
                     </blockquote>
                     <p>
@@ -220,68 +231,82 @@
         </div>
     </section>
 
-    <section id="services" class="py-24 md:py-32 px-6 bg-white relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20 reveal">
+    <section id="services" class="py-24 md:py-32 px-6 bg-white relative overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-calm-sand/60 blur-[100px] animate-pulse-slow"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[30vw] h-[30vw] rounded-full bg-calm-blush/20 blur-[100px] animate-pulse-slow" style="animation-delay: 3s;"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-24 reveal">
                 <span class="text-calm-steel font-medium tracking-[0.2em] text-sm uppercase">ΕΞΕΙΔΙΚΕΥΣΗ</span>
-                <h2 class="text-4xl md:text-5xl font-serif text-calm-slate mt-4 mb-6">Υπηρεσίες</h2>
-                <div class="w-16 h-[1px] bg-calm-blush mx-auto"></div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif text-calm-slate mt-4 mb-6">Πεδία Υποστήριξης</h2>
+                <div class="w-16 h-px bg-calm-blush mx-auto"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                 
-                <div class="p-10 rounded-2xl bg-calm-pearl border border-calm-sand hover-lift group reveal">
-                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-8 shadow-sm">
-                        <i data-lucide="baby" class="w-6 h-6 text-calm-slate"></i>
-                    </div>
-                    <h3 class="text-2xl font-serif text-calm-slate mb-4">Ψυχολογία Παιδιού & Εφήβου</h3>
-                    <p class="text-calm-slate/70 mb-6 font-light leading-relaxed">
-                        Αντλώντας από τις εξειδικευμένες μεταπτυχιακές της σπουδές (MSc), η ψυχολόγος αναλαμβάνει με υπευθυνότητα τη διάγνωση και αντιμετώπιση της παιδικής και εφηβικής ψυχοπαθολογίας. Χρησιμοποιώντας εργαλεία από τη Γνωσιακή Συμπεριφορική Θεραπεία (CBT) και τη Θεραπεία Εστιασμένη στη Λύση, βοηθά τα παιδιά και τους εφήβους να διαχειριστούν το σχολικό άγχος, τις φοβίες και τις συναισθηματικές μεταπτώσεις, χτίζοντας ψυχική ανθεκτικότητα.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-white text-calm-slate text-xs tracking-wide border border-calm-sand">Ψυχοθεραπεία παιδιών - εφήβων (50')</span>
-                    </div>
-                </div>
-
-                <div class="p-10 rounded-2xl bg-calm-pearl border border-calm-sand hover-lift group reveal delay-100">
-                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-8 shadow-sm">
-                        <i data-lucide="brain-circuit" class="w-6 h-6 text-calm-slate"></i>
-                    </div>
-                    <h3 class="text-2xl font-serif text-calm-slate mb-4">Διαχείριση Άγχους, Πανικού & Κατάθλιψης</h3>
-                    <p class="text-calm-slate/70 mb-6 font-light leading-relaxed">
-                        Η καθημερινότητα συχνά μας εγκλωβίζει σε έναν κύκλο άγχους, φοβιών και καταθλιπτικής διάθεσης. Μέσα από τον συνδυασμό της Συστημικής προσέγγισης, της Gestalt και της CFT, δουλεύουμε συνεργατικά για να εντοπίσουμε τι πυροδοτεί τις κρίσεις πανικού και τη θλίψη σας. Στόχος μας δεν είναι απλώς η "αφαίρεση" του συμπτώματος, αλλά η βαθιά κατανόηση του εαυτού σας, ώστε να ανακτήσετε τον έλεγχο και τη χαρά της ζωής.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-white text-calm-slate text-xs tracking-wide border border-calm-sand">Ενήλικες (50')</span>
-                        <span class="px-3 py-1 bg-white text-calm-slate text-xs tracking-wide border border-calm-sand">Κρίσεις Πανικού</span>
-                        <span class="px-3 py-1 bg-white text-calm-slate text-xs tracking-wide border border-calm-sand">Κατάθλιψη</span>
+                <div class="service-glass p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden reveal">
+                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-calm-blush/10 rounded-full blur-2xl group-hover:bg-calm-blush/20 transition-all duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-calm-slate text-white rounded-2xl flex items-center justify-center mb-8 transform group-hover:rotate-6 transition-transform duration-500 shadow-md">
+                            <i data-lucide="sparkles" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl lg:text-3xl font-serif text-calm-slate mb-4">Ψυχολογία Παιδιού & Εφήβου</h3>
+                        <p class="text-calm-slate/70 mb-8 font-light leading-relaxed">
+                            Αντλώντας από τις εξειδικευμένες μεταπτυχιακές της σπουδές (MSc), αναλαμβάνει τη διάγνωση και αντιμετώπιση της παιδικής και εφηβικής ψυχοπαθολογίας. Χρησιμοποιώντας εργαλεία από τη CBT και τη Solution Focused Therapy, βοηθά στη διαχείριση του σχολικού άγχους και των φοβιών.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-1.5 bg-calm-pearl text-calm-slate text-xs font-medium tracking-wide rounded-full border border-calm-sand">Ψυχοθεραπεία (50')</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="p-10 rounded-2xl bg-calm-pearl border border-calm-sand hover-lift group reveal">
-                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-8 shadow-sm">
-                        <i data-lucide="users" class="w-6 h-6 text-calm-slate"></i>
-                    </div>
-                    <h3 class="text-2xl font-serif text-calm-slate mb-4">Συμβουλευτική Γονέων, Σχέσεις & Θυμός</h3>
-                    <p class="text-calm-slate/70 mb-6 font-light leading-relaxed">
-                        Κανείς δεν μας μαθαίνει πώς να είμαστε γονείς ή πώς να επικοινωνούμε απόλυτα σωστά στις σχέσεις μας. Παρέχεται εξειδικευμένη Συμβουλευτική Γονέων για τη διαχείριση συγκρούσεων και την οριοθέτηση στο σπίτι. Παράλληλα, στις ατομικές συνεδρίες, δουλεύουμε εντατικά στη διαχείριση των εκρήξεων θυμού και στη βελτίωση των διαπροσωπικών σας σχέσεων, μαθαίνοντας να εκφράζετε τις ανάγκες σας με υγιή και διεκδικητικό τρόπο.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-white text-calm-slate text-xs tracking-wide border border-calm-sand">Συμβουλευτική γονέων (50')</span>
-                        <span class="px-3 py-1 bg-white text-calm-slate text-xs tracking-wide border border-calm-sand">Διαχείριση Θυμού</span>
+                <div class="service-glass p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden reveal delay-100 lg:mt-12">
+                    <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-calm-steel/10 rounded-full blur-2xl group-hover:bg-calm-steel/20 transition-all duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-white border-2 border-calm-sand text-calm-slate rounded-2xl flex items-center justify-center mb-8 transform group-hover:-translate-y-2 transition-transform duration-500 shadow-sm">
+                            <i data-lucide="anchor" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl lg:text-3xl font-serif text-calm-slate mb-4">Άγχος, Πανικός & Κατάθλιψη</h3>
+                        <p class="text-calm-slate/70 mb-8 font-light leading-relaxed">
+                            Η καθημερινότητα συχνά μας εγκλωβίζει. Μέσα από τον συνδυασμό της Συστημικής προσέγγισης, της Gestalt και της CFT, δουλεύουμε συνεργατικά για να εντοπίσουμε τι πυροδοτεί τις κρίσεις πανικού και τη θλίψη σας, ανακτώντας τον έλεγχο και τη χαρά της ζωής.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-1.5 bg-calm-pearl text-calm-slate text-xs font-medium tracking-wide rounded-full border border-calm-sand">Ενήλικες (50')</span>
+                            <span class="px-4 py-1.5 bg-calm-pearl text-calm-slate text-xs font-medium tracking-wide rounded-full border border-calm-sand">Κρίσεις Πανικού</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="p-10 rounded-2xl bg-calm-pearl border border-calm-sand hover-lift group reveal delay-100">
-                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-8 shadow-sm">
-                        <i data-lucide="laptop" class="w-6 h-6 text-calm-slate"></i>
+                <div class="service-glass p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden reveal">
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-calm-slate/5 rounded-full blur-2xl group-hover:bg-calm-slate/10 transition-all duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-calm-blush text-white rounded-2xl flex items-center justify-center mb-8 transform group-hover:scale-110 transition-transform duration-500 shadow-md">
+                            <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl lg:text-3xl font-serif text-calm-slate mb-4">Συμβουλευτική Γονέων & Σχέσεις</h3>
+                        <p class="text-calm-slate/70 mb-8 font-light leading-relaxed">
+                            Εξειδικευμένη Συμβουλευτική Γονέων για τη διαχείριση συγκρούσεων. Παράλληλα, στις ατομικές συνεδρίες δουλεύουμε εντατικά στη διαχείριση του θυμού και στη βελτίωση των διαπροσωπικών σας σχέσεων, με υγιή και διεκδικητικό τρόπο.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-1.5 bg-calm-pearl text-calm-slate text-xs font-medium tracking-wide rounded-full border border-calm-sand">Συμβουλευτική (50')</span>
+                            <span class="px-4 py-1.5 bg-calm-pearl text-calm-slate text-xs font-medium tracking-wide rounded-full border border-calm-sand">Διαχείριση Θυμού</span>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-serif text-calm-slate mb-4">Διαδικτυακή Ψυχοθεραπεία (Online)</h3>
-                    <p class="text-calm-slate/70 mb-6 font-light leading-relaxed">
-                        Για να διασφαλίσουμε ότι η ψυχολογική υποστήριξη είναι προσβάσιμη σε όλους, ανεξαρτήτως απόστασης ή απαιτητικού ωραρίου, όλες οι υπηρεσίες συμβουλευτικής και ψυχοθεραπείας παρέχονται και διαδικτυακά. Ο ψηφιακός χώρος διαμορφώνεται με την ίδια ζεστασιά, εχεμύθεια και ασφάλεια που προσφέρει και η δια ζώσης συνεδρία.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-white text-calm-slate text-xs tracking-wide border border-calm-sand">Online Συνεδρία (50')</span>
+                </div>
+
+                <div class="service-glass p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden reveal delay-100 lg:mt-12">
+                    <div class="absolute -left-10 -top-10 w-40 h-40 bg-calm-sand/50 rounded-full blur-2xl group-hover:bg-calm-sand/80 transition-all duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-white border-2 border-calm-sand text-calm-steel rounded-2xl flex items-center justify-center mb-8 transform group-hover:rotate-[-6deg] transition-transform duration-500 shadow-sm">
+                            <i data-lucide="monitor-smartphone" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl lg:text-3xl font-serif text-calm-slate mb-4">Διαδικτυακή Ψυχοθεραπεία</h3>
+                        <p class="text-calm-slate/70 mb-8 font-light leading-relaxed">
+                            Για να διασφαλίσουμε ότι η ψυχολογική υποστήριξη είναι προσβάσιμη σε όλους, ανεξαρτήτως απόστασης ή απαιτητικού ωραρίου. Ο ψηφιακός χώρος διαμορφώνεται με την ίδια ζεστασιά, εχεμύθεια και ασφάλεια.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-1.5 bg-calm-pearl text-calm-slate text-xs font-medium tracking-wide rounded-full border border-calm-sand">Online Συνεδρία (50')</span>
+                        </div>
                     </div>
                 </div>
 
@@ -298,7 +323,7 @@
             <div class="grid lg:grid-cols-3 gap-16">
                 <div class="lg:col-span-1 reveal">
                     <span class="text-calm-blush font-medium tracking-[0.2em] text-sm uppercase">Η ΠΡΟΣΕΓΓΙΣΗ ΜΟΥ</span>
-                    <h2 class="text-4xl md:text-5xl font-serif text-white mt-4 mb-6">Η Θεραπευτική Φαρέτρα</h2>
+                    <h2 class="text-4xl md:text-5xl font-serif text-white mt-4 mb-6">Η Επιστήμη της Αλλαγής</h2>
                     <p class="text-white/60 font-light leading-relaxed">
                         Κάθε άνθρωπος είναι μοναδικός. Γι' αυτό η προσέγγισή μου προσαρμόζεται, συνδυάζοντας κορυφαία επιστημονικά εργαλεία για τη βέλτιστη υποστήριξή σας.
                     </p>
