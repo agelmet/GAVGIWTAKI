@@ -10,10 +10,12 @@
     <meta name="author" content="Advon Media">
     <meta name="robots" content="index, follow">
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -43,7 +45,6 @@
                         'marquee': 'marquee 60s linear infinite',
                         'float': 'float 8s ease-in-out infinite',
                         'fade-in': 'fadeIn 1.5s ease-out forwards',
-                        'slow-pan': 'slowPan 30s ease-in-out infinite alternate',
                         'pulse-slow': 'pulseSlow 6s infinite',
                     },
                     keyframes: {
@@ -58,10 +59,6 @@
                         fadeIn: {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        slowPan: {
-                            '0%': { transform: 'scale(1)' },
-                            '100%': { transform: 'scale(1.05)' },
                         },
                         pulseSlow: {
                             '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
@@ -80,7 +77,7 @@
         ::-webkit-scrollbar-thumb { background: #D4BFC4; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #7A8B99; }
 
-        body { background-color: #F8F7F5; }
+        body { background-color: #F8F7F5; overflow-x: hidden; }
 
         /* Typography Utilities */
         .calligraphic { font-family: 'Playfair Display', serif; font-style: italic; }
@@ -100,7 +97,7 @@
             border-bottom: 1px solid rgba(44, 54, 67, 0.05);
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.8);
@@ -135,10 +132,12 @@
 
     </style>
 
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="text-calm-slate font-sans antialiased overflow-x-hidden selection:bg-calm-blush selection:text-white">
+<body class="text-calm-slate font-sans antialiased selection:bg-calm-blush selection:text-white">
 
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 transition-all duration-500 glass-nav" id="navbar">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="group flex flex-col">
@@ -159,6 +158,7 @@
             </button>
         </div>
         
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="absolute top-full left-0 w-full bg-calm-pearl/95 backdrop-blur-xl shadow-xl hidden flex-col items-center py-10 space-y-8 border-t border-calm-sand">
             <a href="#about" class="text-lg tracking-wide font-medium text-calm-slate mobile-link">ΣΧΕΤΙΚΑ</a>
             <a href="#services" class="text-lg tracking-wide font-medium text-calm-slate mobile-link">ΥΠΗΡΕΣΙΕΣ</a>
@@ -168,18 +168,26 @@
         </div>
     </nav>
 
-    <section class="relative min-h-screen flex items-center justify-center md:justify-end pt-24 pb-12 px-6 overflow-hidden">
-        <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://cdn.doctoranytime.gr/practices/6d7941b6-f109-4cf8-b62f-d7fdd370b80c.jpg');"></div>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center md:justify-end pt-24 pb-12 overflow-hidden bg-calm-pearl md:bg-transparent">
+        <!-- Background Image (Hidden on Mobile) -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat hidden md:block" style="background-image: url('https://cdn.doctoranytime.gr/practices/6d7941b6-f109-4cf8-b62f-d7fdd370b80c.jpg');"></div>
         
+        <!-- Overlays for readability (Desktop only) -->
         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-calm-pearl/40 to-calm-pearl/95 z-10 hidden md:block"></div>
-        <div class="absolute inset-0 bg-calm-pearl/80 z-10 md:hidden"></div>
 
-        <div class="max-w-7xl mx-auto w-full relative z-20 flex justify-center md:justify-end">
-            <div class="w-full md:w-1/2 lg:w-[45%] glass-card p-10 md:p-14 rounded-2xl shadow-lux opacity-0 animate-fade-in" style="animation-delay: 0.3s;">
+        <!-- Content Right Aligned -->
+        <div class="max-w-7xl mx-auto w-full relative z-20 flex justify-center md:justify-end px-6 lg:px-10">
+            <div class="w-full md:w-1/2 lg:w-[45%] md:glass-card py-10 md:p-14 rounded-2xl md:shadow-lux opacity-0 animate-fade-in" style="animation-delay: 0.3s;">
+                
                 <span class="flex items-center gap-3 text-calm-steel tracking-[0.2em] text-sm font-medium mb-6 uppercase">
                     <span class="w-8 h-px bg-calm-blush"></span>
                     ΑΣΦΑΛΕΣ ΠΛΑΙΣΙΟ ΘΕΡΑΠΕΙΑΣ
                 </span>
+
+                <!-- Mobile Only Image -->
+                <img src="https://cdn.doctoranytime.gr/practices/6d7941b6-f109-4cf8-b62f-d7fdd370b80c.jpg" alt="Χώρος Θεραπείας" class="w-full h-64 sm:h-80 object-cover rounded-2xl shadow-lg mb-8 md:hidden">
+
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-calm-slate leading-[1.1] mb-6">
                     Δώστε χώρο σε όσα <span class="text-calm-blush italic">νιώθετε.</span>
                 </h1>
@@ -196,17 +204,21 @@
         </div>
     </section>
 
-    <section id="about" class="py-24 md:py-32 px-6 bg-calm-pearl relative">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center">
+    <!-- About Section -->
+    <section id="about" class="py-24 md:py-32 px-6 bg-calm-pearl relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center relative z-10">
             
+            <!-- Portrait with Animation -->
             <div class="lg:col-span-5 relative reveal">
                 <div class="relative rounded-[2.5rem] overflow-hidden shadow-lux animate-float border-[8px] border-white z-10 bg-white">
                     <img src="https://cdn.doctoranytime.gr/profileimages/306f5f60-fece-4f49-b521-2c928aa0ccc8.jpg" alt="Χρυσούλα Γαυγιωτάκη Ψυχολόγος" class="w-full h-auto object-cover filter contrast-105">
                 </div>
+                <!-- Decorative Elements -->
                 <div class="absolute -bottom-8 -left-8 w-40 h-40 border border-calm-blush rounded-full z-0 opacity-50"></div>
                 <div class="absolute top-10 -right-10 w-32 h-32 bg-calm-blush/10 rounded-full z-0 blur-2xl"></div>
             </div>
 
+            <!-- Bio Content -->
             <div class="lg:col-span-7 reveal delay-200">
                 <h2 class="text-3xl md:text-4xl font-serif text-calm-slate mb-8">Χρυσούλα Γαυγιωτάκη <span class="block text-xl font-sans font-light text-calm-steel mt-2">BSc, MSc - Αρ. Αδείας: 5883</span></h2>
                 
@@ -231,9 +243,11 @@
         </div>
     </section>
 
+    <!-- Services Section -->
     <section id="services" class="py-24 md:py-32 px-6 bg-white relative overflow-hidden">
-        <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-calm-sand/60 blur-[100px] animate-pulse-slow"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[30vw] h-[30vw] rounded-full bg-calm-blush/20 blur-[100px] animate-pulse-slow" style="animation-delay: 3s;"></div>
+        <!-- Abstract Background Blobs -->
+        <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-calm-sand/60 blur-[100px] animate-pulse-slow z-0"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[30vw] h-[30vw] rounded-full bg-calm-blush/20 blur-[100px] animate-pulse-slow z-0" style="animation-delay: 3s;"></div>
 
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-24 reveal">
@@ -244,8 +258,9 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                 
+                <!-- Service 1 -->
                 <div class="service-glass p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden reveal">
-                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-calm-blush/10 rounded-full blur-2xl group-hover:bg-calm-blush/20 transition-all duration-700"></div>
+                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-calm-blush/10 rounded-full blur-2xl group-hover:bg-calm-blush/20 transition-all duration-700 z-0"></div>
                     <div class="relative z-10">
                         <div class="w-16 h-16 bg-calm-slate text-white rounded-2xl flex items-center justify-center mb-8 transform group-hover:rotate-6 transition-transform duration-500 shadow-md">
                             <i data-lucide="sparkles" class="w-8 h-8"></i>
@@ -260,8 +275,9 @@
                     </div>
                 </div>
 
+                <!-- Service 2 -->
                 <div class="service-glass p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden reveal delay-100 lg:mt-12">
-                    <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-calm-steel/10 rounded-full blur-2xl group-hover:bg-calm-steel/20 transition-all duration-700"></div>
+                    <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-calm-steel/10 rounded-full blur-2xl group-hover:bg-calm-steel/20 transition-all duration-700 z-0"></div>
                     <div class="relative z-10">
                         <div class="w-16 h-16 bg-white border-2 border-calm-sand text-calm-slate rounded-2xl flex items-center justify-center mb-8 transform group-hover:-translate-y-2 transition-transform duration-500 shadow-sm">
                             <i data-lucide="anchor" class="w-8 h-8"></i>
@@ -277,8 +293,9 @@
                     </div>
                 </div>
 
+                <!-- Service 3 -->
                 <div class="service-glass p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden reveal">
-                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-calm-slate/5 rounded-full blur-2xl group-hover:bg-calm-slate/10 transition-all duration-700"></div>
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-calm-slate/5 rounded-full blur-2xl group-hover:bg-calm-slate/10 transition-all duration-700 z-0"></div>
                     <div class="relative z-10">
                         <div class="w-16 h-16 bg-calm-blush text-white rounded-2xl flex items-center justify-center mb-8 transform group-hover:scale-110 transition-transform duration-500 shadow-md">
                             <i data-lucide="heart-handshake" class="w-8 h-8"></i>
@@ -294,8 +311,9 @@
                     </div>
                 </div>
 
+                <!-- Service 4 -->
                 <div class="service-glass p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden reveal delay-100 lg:mt-12">
-                    <div class="absolute -left-10 -top-10 w-40 h-40 bg-calm-sand/50 rounded-full blur-2xl group-hover:bg-calm-sand/80 transition-all duration-700"></div>
+                    <div class="absolute -left-10 -top-10 w-40 h-40 bg-calm-sand/50 rounded-full blur-2xl group-hover:bg-calm-sand/80 transition-all duration-700 z-0"></div>
                     <div class="relative z-10">
                         <div class="w-16 h-16 bg-white border-2 border-calm-sand text-calm-steel rounded-2xl flex items-center justify-center mb-8 transform group-hover:rotate-[-6deg] transition-transform duration-500 shadow-sm">
                             <i data-lucide="monitor-smartphone" class="w-8 h-8"></i>
@@ -314,6 +332,7 @@
         </div>
     </section>
 
+    <!-- Pillars / Approach -->
     <section id="approach" class="py-24 md:py-32 px-6 bg-calm-slate text-white relative overflow-hidden">
         <div class="absolute inset-0 z-0 opacity-10">
             <div class="absolute top-[-10%] right-[-5%] w-[40vw] h-[40vw] rounded-full bg-calm-blush blur-[100px]"></div>
@@ -330,24 +349,28 @@
                 </div>
                 
                 <div class="lg:col-span-2 grid sm:grid-cols-2 gap-8">
+                    <!-- Pillar 1 -->
                     <div class="p-8 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors reveal">
                         <h4 class="text-xl font-serif text-calm-blush mb-4">Πολυδιάστατη Θεραπεία</h4>
                         <p class="text-white/70 font-light text-sm leading-relaxed">
                             Δεν πιστεύω στο "ένα μέγεθος για όλους". Έχοντας εκπαιδευτεί στη Συστημική Θεραπεία, στη Gestalt, στη CBT και στο Solution Focused Therapy, διαθέτω την ευελιξία να προσαρμόζω τις τεχνικές μου ακριβώς σε αυτό που χρειάζεστε τη δεδομένη στιγμή.
                         </p>
                     </div>
+                    <!-- Pillar 2 -->
                     <div class="p-8 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors reveal delay-100">
                         <h4 class="text-xl font-serif text-calm-blush mb-4">Ακαδημαϊκή Εξειδίκευση</h4>
                         <p class="text-white/70 font-light text-sm leading-relaxed">
                             Η ψυχολογία παιδιών και εφήβων απαιτεί ειδικούς χειρισμούς. Το Μεταπτυχιακό (MSc) διασφαλίζει στους γονείς ότι η παρέμβαση βασίζεται σε αυστηρά επιστημονικά και σύγχρονα πρότυπα.
                         </p>
                     </div>
+                    <!-- Pillar 3 -->
                     <div class="p-8 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors reveal">
                         <h4 class="text-xl font-serif text-calm-blush mb-4">Η Δύναμη της Συμπόνιας</h4>
                         <p class="text-white/70 font-light text-sm leading-relaxed">
                             Μέσα από τη CFT, μαθαίνουμε να αντιμετωπίζουμε τον εαυτό μας με καλοσύνη, αντί για κριτική. Ένα ισχυρό εργαλείο για άτομα με ενοχές, άγχος και χαμηλή αυτοεκτίμηση.
                         </p>
                     </div>
+                    <!-- Pillar 4 -->
                     <div class="p-8 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors reveal delay-100">
                         <h4 class="text-xl font-serif text-calm-blush mb-4">Εμπιστοσύνη & Σχέση</h4>
                         <p class="text-white/70 font-light text-sm leading-relaxed">
@@ -359,7 +382,8 @@
         </div>
     </section>
 
-    <section id="space" class="py-24 md:py-32 px-6 bg-calm-pearl">
+    <!-- The Space (Gallery) -->
+    <section id="space" class="py-24 md:py-32 px-6 bg-calm-pearl overflow-hidden">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <span class="text-calm-steel font-medium tracking-[0.2em] text-sm uppercase">ΠΕΡΙΒΑΛΛΟΝ</span>
@@ -369,49 +393,58 @@
                 </p>
             </div>
 
+            <!-- Masonry-style Grid -->
             <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+                <!-- Image 1 -->
                 <button class="w-full break-inside-avoid relative group reveal" onclick="openLightbox('https://cdn.doctoranytime.gr/practices/b6b2ad40-7185-4841-846f-9baf4df686dd.jpg')">
                     <img src="https://cdn.doctoranytime.gr/practices/b6b2ad40-7185-4841-846f-9baf4df686dd.jpg" alt="Χώρος" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.02]">
                     <div class="absolute inset-0 bg-calm-slate/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <i data-lucide="expand" class="w-8 h-8 text-white"></i>
                     </div>
                 </button>
+                <!-- Image 2 -->
                 <button class="w-full break-inside-avoid relative group reveal delay-100" onclick="openLightbox('https://cdn.doctoranytime.gr/practices/b697c2ce-f540-41d1-9ec5-29938d11d4f1.jpg')">
                     <img src="https://cdn.doctoranytime.gr/practices/b697c2ce-f540-41d1-9ec5-29938d11d4f1.jpg" alt="Χώρος" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.02]">
                     <div class="absolute inset-0 bg-calm-slate/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <i data-lucide="expand" class="w-8 h-8 text-white"></i>
                     </div>
                 </button>
+                <!-- Image 3 -->
                 <button class="w-full break-inside-avoid relative group reveal delay-200" onclick="openLightbox('https://cdn.doctoranytime.gr/practices/473eab3c-b873-4889-a104-7b86bd85b843.jpg')">
                     <img src="https://cdn.doctoranytime.gr/practices/473eab3c-b873-4889-a104-7b86bd85b843.jpg" alt="Χώρος" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.02]">
                     <div class="absolute inset-0 bg-calm-slate/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <i data-lucide="expand" class="w-8 h-8 text-white"></i>
                     </div>
                 </button>
+                <!-- Image 4 -->
                 <button class="w-full break-inside-avoid relative group reveal" onclick="openLightbox('https://cdn.doctoranytime.gr/practices/05fa661d-d2ac-4ce7-94e6-59653205e3fd.jpg')">
                     <img src="https://cdn.doctoranytime.gr/practices/05fa661d-d2ac-4ce7-94e6-59653205e3fd.jpg" alt="Χώρος" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.02]">
                     <div class="absolute inset-0 bg-calm-slate/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <i data-lucide="expand" class="w-8 h-8 text-white"></i>
                     </div>
                 </button>
+                <!-- Image 5 -->
                 <button class="w-full break-inside-avoid relative group reveal delay-100" onclick="openLightbox('https://cdn.doctoranytime.gr/practices/247cdd99-3d6d-4f2a-8287-d6bb32db6da6.jpg')">
                     <img src="https://cdn.doctoranytime.gr/practices/247cdd99-3d6d-4f2a-8287-d6bb32db6da6.jpg" alt="Χώρος" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.02]">
                     <div class="absolute inset-0 bg-calm-slate/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <i data-lucide="expand" class="w-8 h-8 text-white"></i>
                     </div>
                 </button>
+                <!-- Image 6 -->
                 <button class="w-full break-inside-avoid relative group reveal delay-200" onclick="openLightbox('https://cdn.doctoranytime.gr/practices/8939ab5c-847c-4739-9ed9-1b5abbae9e8b.jpg')">
                     <img src="https://cdn.doctoranytime.gr/practices/8939ab5c-847c-4739-9ed9-1b5abbae9e8b.jpg" alt="Χώρος" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.02]">
                     <div class="absolute inset-0 bg-calm-slate/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <i data-lucide="expand" class="w-8 h-8 text-white"></i>
                     </div>
                 </button>
+                <!-- Image 7 -->
                 <button class="w-full break-inside-avoid relative group reveal" onclick="openLightbox('https://cdn.doctoranytime.gr/practices/483d499a-4c73-4b7e-b0b6-93792d94daec.jpg')">
                     <img src="https://cdn.doctoranytime.gr/practices/483d499a-4c73-4b7e-b0b6-93792d94daec.jpg" alt="Χώρος" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.02]">
                     <div class="absolute inset-0 bg-calm-slate/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <i data-lucide="expand" class="w-8 h-8 text-white"></i>
                     </div>
                 </button>
+                <!-- Image 8 -->
                 <button class="w-full break-inside-avoid relative group reveal delay-100" onclick="openLightbox('https://cdn.doctoranytime.gr/practices/b6e33a6f-e42e-45bb-a5eb-1190394b0c15.jpg')">
                     <img src="https://cdn.doctoranytime.gr/practices/b6e33a6f-e42e-45bb-a5eb-1190394b0c15.jpg" alt="Χώρος" class="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.02]">
                     <div class="absolute inset-0 bg-calm-slate/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -422,6 +455,7 @@
         </div>
     </section>
 
+    <!-- Lightbox Element -->
     <div id="lightbox" class="fixed inset-0 z-[100] flex items-center justify-center bg-calm-slate/90 cursor-zoom-out" onclick="closeLightbox()">
         <button class="absolute top-8 right-8 text-white hover:text-calm-blush transition-colors">
             <i data-lucide="x" class="w-10 h-10"></i>
@@ -429,17 +463,20 @@
         <img id="lightbox-img" src="" alt="Προβολή Εικόνας" class="max-w-[90vw] max-h-[90vh] object-contain shadow-2xl cursor-default" onclick="event.stopPropagation()">
     </div>
 
-    <section id="reviews" class="py-24 bg-white overflow-hidden border-t border-calm-sand">
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-24 bg-white overflow-hidden border-t border-calm-sand relative">
         <div class="max-w-7xl mx-auto px-6 mb-16 text-center reveal">
             <h2 class="text-4xl font-serif text-calm-slate mb-4">Εμπειρίες Θεραπευόμενων</h2>
             <p class="text-calm-slate/60 font-light">Η εμπιστοσύνη σας είναι η μεγαλύτερη επιβεβαίωση.</p>
         </div>
 
         <div class="w-full overflow-hidden relative pb-10">
+            <!-- Fade edges -->
             <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
             <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
             
             <div class="marquee-wrapper animate-marquee">
+                <!-- Original Set of Reviews -->
                 <div class="flex space-x-6 px-3">
                     
                     <div class="w-[350px] bg-calm-pearl p-8 rounded-none border border-calm-sand shrink-0 relative">
@@ -555,6 +592,7 @@
                     </div>
                 </div>
 
+                <!-- Duplicated Set for Infinite Scroll Effect -->
                 <div class="flex space-x-6 px-3" aria-hidden="true">
                     <div class="w-[350px] bg-calm-pearl p-8 rounded-none border border-calm-sand shrink-0 relative">
                         <div class="flex justify-between items-start mb-6">
@@ -671,8 +709,9 @@
         </div>
     </section>
 
+    <!-- Footer / Contact -->
     <footer id="contact" class="bg-calm-dark text-white pt-24 pb-8 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-calm-slate/50 rounded-full blur-[120px] transform translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-calm-slate/50 rounded-full blur-[120px] transform translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"></div>
         
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
@@ -699,10 +738,6 @@
                             <i data-lucide="phone" class="w-5 h-5 text-calm-blush shrink-0"></i>
                             <a href="tel:+306983720833" class="hover:text-white transition-colors tracking-wide">698 372 0833</a>
                         </li>
-                        <li class="flex items-center gap-4">
-                            <i data-lucide="mail" class="w-5 h-5 text-calm-blush shrink-0"></i>
-                            <a href="mailto:katerina_tenne@yahoo.gr" class="hover:text-white transition-colors tracking-wide">katerina_tenne@yahoo.gr</a>
-                        </li>
                     </ul>
                 </div>
 
@@ -728,6 +763,7 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
         // Initialize Icons
         lucide.createIcons();
